@@ -7,8 +7,7 @@ tmux_get_option() {
   _default_value="$2"
 
   local _current_option_value
-  _current_option_value=$(tmux show-option -gqv "$_option_name")
-  if [[ -n "$_current_option_value" ]]; then
+  if _current_option_value=$(tmux show-option -gv "$_option_name"); then
     echo "$_current_option_value"
   else
     echo "$_default_value"
